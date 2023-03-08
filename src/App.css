@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
+.App {
+  text-align: center;
+  background-color: #03A9F4;;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #333333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: Montserrat;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-button {
+  background-color:#8BC34A ;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #00C853;
+}
+.login-button img{
+  width: 20px;
+}
+
+.test button{
+  width: 50px;
+  height: 50px;
+  margin: 50px;
+}
+.test button:nth-child(1){
+  background: #82B1FF;
+}
+.test button:nth-child(2){
+  background: #03a8f4;
+}
+.test button:nth-child(3){
+  background: #00E5FF;
+}
+.test button:nth-child(4){
+  background: #00C853;
+}
+.test button:nth-child(5){
+  background: #8BC34A;
+}
+.test button:nth-child(6){
+  background: white;
+}
+.test button:nth-child(7){
+  background: white;
+}
+.icon-firstLayer{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.redirection-button{
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  border-radius: 3em;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(to bottom, #3f51b5, #2196f3);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+}
+.redirection-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  animation: pulse 1s infinite;
+}
+
+.redirection-button:active {
+  transform: translateY(0px);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.redirection-button::after {
+  content: "→";
+  margin-left: 0.5em;
+  transition: all 0.2s ease-in-out;
+}
+
+.redirection-button:hover::after {
+  transform: translateX(0.25em);
+}
+
+.redirection-button:active::after {
+  transform: translateX(-0.25em);
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.5);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(63, 81, 181, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.5);
+  }
+}
+.canvas-container{
+  width: 1000px;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}
