@@ -1,10 +1,10 @@
 import './App.css';
-import React, { useEffect, useState } from 'react'
-import { MyRoutes } from './Router/MyRoutes';
+import React, {  useState } from 'react'
 import { GiSecretDoor } from 'react-icons/gi';
 import { IconContext } from "react-icons";
-import { Navigate } from 'react-router-dom'
 import { SecondLayer } from './components/SecondLayer';
+
+
 
 function App() {
 
@@ -14,12 +14,16 @@ function App() {
   const [secondLayer, setSecondLayer] = useState(false);
 
 
+  
+
   const handleButtonClick = () => {
     const name = window.prompt('What is your name???:');
     setUserInput(name);
     const clan = window.prompt('what is your clan??:');
     setClanName(clan);
+
 };
+
 
   return (
     <div className="App">
@@ -34,12 +38,14 @@ function App() {
 
         <p>Nombre del usuario: {userInput}</p>
         <p>Clan del usuario: {clanName}</p>
-
+        
        <button onClick={() => (setFirstLayer(false), setSecondLayer(true))} className='redirection-button'></button>
+      
+
     </div>
       )}
       {secondLayer && (
-        <SecondLayer></SecondLayer>
+        <SecondLayer name1 = {userInput}  clan1 = {clanName}></SecondLayer>
       )}
 
         
@@ -49,3 +55,4 @@ function App() {
 }
 
 export default App;
+
