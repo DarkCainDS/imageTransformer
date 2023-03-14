@@ -1,13 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FiArrowUpCircle } from "react-icons/fi";
+import { FiArrowLeftCircle } from "react-icons/fi";
 
 function ImageTransformer({ name2, clan2 }) {
 
+  const [isLoading, setIsLoading] = useState(true);
   const [imageSrc, setImageSrc] = useState('');
   const canvasRef = useRef(null);
   const [namePerson, setNamePerson] = useState(name2);
   const [nameClan, setNameClan] = useState(clan2);
   const [isVerify, setIsVerify] = useState(false)
 
+ 
   function handleDownloadAll() {
     const filters = [
       { name: "grayscale", func: handleGrayscale },
@@ -63,6 +67,7 @@ function ImageTransformer({ name2, clan2 }) {
     reader.onload = () => {
       setImageSrc(reader.result);
     };
+    setIsLoading(false);
   }
 
   function handleDownload() {
@@ -421,40 +426,56 @@ function ImageTransformer({ name2, clan2 }) {
 
   return (
     <div className='main-layer'>
-      
-      <div className='square-container'>
 
+      <div className='left'>
+        <h1>Choose Filter </h1>
+        <div className='square-container'>
+
+
+
+          <button onClick={handleGrayscale}>Grayscale</button>
+          <button onClick={handleIncreaseSaturation}>Aumentar saturación</button>
+          <button onClick={handleLessDesaturate}>Desaturar</button>
+          <button onClick={handleMoreContrast}>Más contrast</button>
+          <button onClick={handleLessContrast}>Less contrast</button>
+          <button onClick={handleApplyBlur}>Aplicar desenfoque</button>
+          <button onClick={handleResize}>Redimenzionar</button>
+
+          <button onClick={handleOpacity}>Less opacity</button>
+          <button onClick={handleMoreBrightness}>Brightness</button>
+          <button onClick={handleInvert}>InvertColor</button>
+          <button onClick={handleLessBrightness}>Less brightness</button>
+
+          <button onClick={handleHueRotate360}>Original</button>
+          <button onClick={handleHueRotate270}>Hue-Rotate270</button>
+          <button onClick={handleHueRotate180}>Hue-Rotate180</button>
+          <button onClick={handleHueRotate90}>Hue-Rotate90</button>
+          <button onClick={handleRotation}>Rotation_90°</button>
+          <button onClick={handleReflection}>Reflection_180°</button>
+
+
+          <button onClick={handleSepia}> Sepia</button>
+          <button onClick={handleBorder}> Border</button>
+          <button onClick={handleDropShadow}> DropShadow</button>
+
+        </div>
+      </div>
+
+
+      <div className='right'>
+        
+        <div className='upload-square'>
+          <h1>Upload Image</h1>
+
+          {isLoading ? 
+          (<div style={{color:"red", fontSize:"25px"}}><FiArrowUpCircle/><p>Choose your image to upload!!</p></div>) 
+          : 
+          (<div style={{color:"green", fontSize:"35px"}}><FiArrowLeftCircle/><p>Press a Button !!</p></div>)}
+          
+        <input type="file" accept="image/*" onChange={handleImageChange} className="input-file" />
+        </div>
         
 
-        <button className='BlackAndWhite' onClick={handleGrayscale}>Convertir a escala de grises</button>
-        <button className='MoreSaturate' onClick={handleIncreaseSaturation}>Aumentar saturación</button>
-        <button className='LessSaturate' onClick={handleLessDesaturate}>Desaturar</button>
-        <button onClick={handleMoreContrast}>Más contraste</button>
-        <button onClick={handleLessContrast}>Menos contraste</button>
-        <button onClick={handleApplyBlur}>Aplicar desenfoque</button>
-        <button onClick={handleResize}>Resize Image</button>
-
-        <button onClick={handleOpacity}>handleOpacity</button>
-        <button onClick={handleMoreBrightness}>handleBrightness</button>
-        <button onClick={handleInvert}> handleInvert</button>
-        <button onClick={handleLessBrightness}>handleLessBrightness</button>
-
-        <button onClick={handleHueRotate360}>Original</button>
-        <button onClick={handleHueRotate270}>handleHueRotate270</button>
-        <button onClick={handleHueRotate180}>handleHueRotate180</button>
-        <button onClick={handleHueRotate90}>handleHueRotate90</button>
-        <button onClick={handleRotation}>handleRotation_90°</button>
-        <button onClick={handleReflection}> handleReflection_180°</button>
-
-
-        <button onClick={handleSepia}> handleSepia</button>
-        <button onClick={handleBorder}> handleBorder</button>
-        <button onClick={handleDropShadow}> handleDropShadow</button>
-
-      </div>
-      
-      <div className='right'>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
         <div className='canvas-container'>
           <canvas ref={canvasRef} />
 
