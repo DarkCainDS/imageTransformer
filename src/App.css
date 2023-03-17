@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap');
 
 .App {
+  filter: saturate(105%) brightness(102%);
   text-align: center;
   background: linear-gradient(45deg, #0172af 25%, #74febebd 90%);
   min-height: 200vh;
